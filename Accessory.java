@@ -43,5 +43,42 @@ class Stats
 
 public class Accessory
 {
+    // Instance Variables
+    public int ID;
+    public String name;
+    public String rarity;
+    public Map<String, Integer> stats;
+    public String description;
+    public String requirements;
+    public int upgrade;
+    public String source;
+    public int mp;
+    public int price;
+
+    // Initialization
+    public Accessory(
+            int ID,
+            String name,
+            String rarity,
+            Map<String, Integer> stats,
+            String description,
+            String requirements,
+            int upgrade,
+            String source,
+            int mp,
+            int price)
+    {
+        this.ID = ID;
+        this.name = name;
+        this.rarity = rarity;
+        this.stats = stats;
+        this.description = description;
+        this.requirements = requirements;
+        this.upgrade = upgrade;
+        this.source = source;
+        this.mp = mp;
+        this.price = price;
+    }
+
 
 }
