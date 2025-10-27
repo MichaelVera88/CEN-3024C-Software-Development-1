@@ -92,4 +92,10 @@ public class Accessory
     public int getMP() {return mp;}
     public int getPrice() {return price;}
 
+    // Set Accessory Stats
+    public Map<String, Integer> setAccessoryStats(String[] names, int[] values)
+    {
+        Stats accessoryStats = new Stats(names, values);
+        return stats = accessoryStats.getAccessoryStats();
+    }
 }
