@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.List;
 
@@ -22,12 +24,12 @@ public class UI
         while (running)
         {
             System.out.println("----------- Main Menu -----------");
-            System.out.println("1. Show Current Inventory");
-            System.out.println("2. Add Accessory");
-            System.out.println("3. Upgrade Accessory");
-            System.out.println("4. Delete Accessory");
-            System.out.println("5. Show Total Value");
-            System.out.println("6. Exit");
+            System.out.println("1: Show Current Inventory");
+            System.out.println("2: Add Accessory");
+            System.out.println("3: Upgrade Accessory");
+            System.out.println("4: Delete Accessory");
+            System.out.println("5: Show Total Value");
+            System.out.println("6: Exit");
             System.out.print(">>> ");
             int choice = input.nextInt();
             switch (choice)
@@ -67,8 +69,8 @@ public class UI
             System.out.println("---------- Accessory List Menu -----------");
             playerInventory.getAccessoryList();
             System.out.println();
-            System.out.println("1. Show Accessory Info");
-            System.out.println("2. Back");
+            System.out.println("1: Show Accessory Info");
+            System.out.println("2: Back");
             System.out.print(">>> ");
             int choice = input.nextInt();
 
@@ -102,7 +104,7 @@ public class UI
                 int back = playerInventory.accessoryList.size() + 1;
                 System.out.println("---------- Choose Accessory -----------");
                 playerInventory.getAccessoryList();
-                System.out.println(back + ". Back");
+                System.out.println(back + ": Back");
                 System.out.println();
                 System.out.print(">>> ");
                 int choice = input.nextInt();
@@ -134,10 +136,15 @@ public class UI
                 System.out.print(acs.getID() + ": ");
                 System.out.println(acs.getName());
             }
+            System.out.println("21: Back");
             System.out.println();
             System.out.print(">>> ");
             int choice = input.nextInt();
-            if (choice < 1 || choice > 20)
+            if (choice == 21)
+            {
+                return;
+            }
+            else if (choice < 1 || choice > 20)
             {
                 System.out.println("Invalid Accessory");
             }
@@ -152,7 +159,46 @@ public class UI
 
     public void upgradeAccessoryMenu()
     {
-        System.out.println("4");
+        Scanner input = new Scanner(System.in);
+        List<Accessory> upgradableAccessories = new ArrayList<>();
+        List<Accessory> upgrades = new ArrayList<>();
+
+        while (true)
+        {
+            for (Accessory acs : playerInventory.accessoryList)
+            {
+                int upgradeID = acs.getUpgrade();
+                if (upgradeID > 0)
+                {
+                    upgradableAccessories.add(acs);
+                    upgrades.add(playerInventory.totalAccessories.get(upgradeID-1));
+                }
+            }
+            int back = upgradableAccessories.size() + 1;
+            System.out.println("---------- Choose Upgradable Accessory -----------");
+            for (int i = 0; i < upgradableAccessories.size(); i++)
+            {
+                System.out.println((i + 1) + ": " +  upgradableAccessories.get(i).getName() + " ---> " + upgrades.get(i).getName());
+            }
+            System.out.println(back + ": Back");
+            System.out.println();
+            System.out.print(">>> ");
+            int choice = input.nextInt();
+            if (choice == back)
+            {
+                return;
+            }
+            else if (choice > upgradableAccessories.size())
+            {
+                System.out.println("Invalid Accessory");
+            }
+            else
+            {
+                playerInventory.updateAccessory(upgradableAccessories.get(choice-1));
+                System.out.println(upgradableAccessories.get(choice-1).getName() + " updated to " + upgrades.get(choice-1).getName() + "!");
+                return;
+            }
+        }
     }
 
     public void deleteAccessoryMenu()

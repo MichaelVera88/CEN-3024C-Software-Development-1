@@ -62,13 +62,7 @@ public class Inventory
         else
         {
             int upgradeID = accessory.getUpgrade();
-            for (Accessory acs : totalAccessories)
-            {
-                if (acs.getUpgrade() == upgradeID)
-                {
-                    System.out.println("Upgrade: " + acs.getName());
-                }
-            }
+            System.out.println("Upgrade: " + totalAccessories.get(upgradeID-1).getName());
         }
 
         System.out.println("Source: " + accessory.getSource());
