@@ -33,9 +33,12 @@ public class Inventory
         }
         else
         {
+            int counter = 1;
             for (Accessory acs : accessoryList)
             {
+                System.out.print(counter + ": ");
                 System.out.println(acs.getName());
+                counter++;
             }
         }
     }

@@ -16,9 +16,10 @@ public class UI
 
     public void mainMenu()
     {
+        boolean running = true;
         Scanner input = new Scanner(System.in);
 
-        while (true)
+        while (running)
         {
             System.out.println("----------- Main Menu -----------");
             System.out.println("1. Show Current Inventory");
@@ -27,7 +28,6 @@ public class UI
             System.out.println("4. Delete Accessory");
             System.out.println("5. Show Total Value");
             System.out.println("6. Exit");
-
             System.out.print(">>> ");
             int choice = input.nextInt();
             switch (choice)
@@ -48,7 +48,8 @@ public class UI
                     totalValueMenu();
                     break;
                 case 6:
-                    return;
+                    running = false;
+                    break;
                 default:
                     System.out.println("Invalid choice");
             }
@@ -59,7 +60,30 @@ public class UI
 
     public void accessoryListMenu()
     {
-        System.out.println("1");
+        Scanner input = new Scanner(System.in);
+
+        while (true)
+        {
+            System.out.println("---------- Accessory List Menu -----------");
+            playerInventory.getAccessoryList();
+            System.out.println();
+            System.out.println("1. Show Accessory Info");
+            System.out.println("2. Back");
+            System.out.print(">>> ");
+            int choice = input.nextInt();
+
+            switch (choice)
+            {
+                case 1:
+                    accessoryInfoMenu();
+                    break;
+                case 2:
+                    return;
+                default:
+                    System.out.println("Invalid choice");
+            }
+            System.out.println();
+        }
     }
 
     public void accessoryInfoMenu()
