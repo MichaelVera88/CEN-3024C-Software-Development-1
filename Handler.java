@@ -12,6 +12,7 @@ public class Handler
         List<Accessory> accessories = loadData("accessories.txt");
 
         Inventory playerInventory = new Inventory(accessoryList, accessories);
+        UI ui = new UI(playerInventory);
     }
 
     public static List<Accessory> loadData(String path)
