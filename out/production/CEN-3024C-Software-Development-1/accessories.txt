@@ -1,0 +1,12 @@
+1
+Farming Talisman
+Speed
+10
+COMMON
+Increases your speed by +10 while held in the Farm, The Barn, Mushroom Desert, and Garden.
+N/A
+0
+Wheat Collection IV
+3
+25
+
