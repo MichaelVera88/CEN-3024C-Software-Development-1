@@ -31,6 +31,7 @@ public class UI
             System.out.println("5: Show Total Value");
             System.out.println("6: Exit");
             System.out.print(">>> ");
+
             int choice = input.nextInt();
             switch (choice)
             {
@@ -72,8 +73,8 @@ public class UI
             System.out.println("1: Show Accessory Info");
             System.out.println("2: Back");
             System.out.print(">>> ");
-            int choice = input.nextInt();
 
+            int choice = input.nextInt();
             switch (choice)
             {
                 case 1:
@@ -107,12 +108,13 @@ public class UI
                 System.out.println(back + ": Back");
                 System.out.println();
                 System.out.print(">>> ");
+
                 int choice = input.nextInt();
                 if (choice == back)
                 {
                     return;
                 }
-                else if (choice > playerInventory.accessoryList.size())
+                else if (choice > playerInventory.accessoryList.size() || choice < 0)
                 {
                     System.out.println("Invalid Accessory");
                 }
@@ -130,7 +132,7 @@ public class UI
 
         while (true)
         {
-            System.out.println("---------- Choose Accessory -----------");
+            System.out.println("---------- Add Accessory -----------");
             for (Accessory acs : playerInventory.totalAccessories)
             {
                 System.out.print(acs.getID() + ": ");
@@ -139,6 +141,7 @@ public class UI
             System.out.println("21: Back");
             System.out.println();
             System.out.print(">>> ");
+
             int choice = input.nextInt();
             if (choice == 21)
             {
@@ -183,12 +186,13 @@ public class UI
             System.out.println(back + ": Back");
             System.out.println();
             System.out.print(">>> ");
+
             int choice = input.nextInt();
             if (choice == back)
             {
                 return;
             }
-            else if (choice > upgradableAccessories.size())
+            else if (choice > upgradableAccessories.size() || choice < 1)
             {
                 System.out.println("Invalid Accessory");
             }
@@ -203,7 +207,33 @@ public class UI
 
     public void deleteAccessoryMenu()
     {
-        System.out.println("5");
+        Scanner input = new Scanner(System.in);
+
+        while (true)
+        {
+            int back = playerInventory.accessoryList.size() + 1;
+            System.out.println("---------- Delete Accessory -----------");
+            playerInventory.getAccessoryList();
+            System.out.println(back + ": Back");
+            System.out.println();
+            System.out.print(">>> ");
+
+            int choice = input.nextInt();
+            if (choice == back)
+            {
+                return;
+            }
+            else if (choice > playerInventory.accessoryList.size() || choice < 0)
+            {
+                System.out.println("Invalid Accessory");
+            }
+            else
+            {
+                System.out.println(playerInventory.accessoryList.get(choice-1).getName() + " removed!");
+                playerInventory.removeAccessory(playerInventory.accessoryList.get(choice-1));
+                return;
+            }
+        }
     }
 
     public void totalValueMenu()
