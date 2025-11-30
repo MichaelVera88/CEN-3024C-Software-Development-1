@@ -23,7 +23,22 @@ public class Inventory
         totalValue += accessory.getPrice();
     }
 
-    // Read Function
+    // Read Functions
+    public void getAccessoryList()
+    {
+        if (accessoryList.isEmpty())
+        {
+            System.out.println("No accessories collected");
+        }
+        else
+        {
+            for (Accessory acs : accessoryList)
+            {
+                System.out.println(acs.getName());
+            }
+        }
+    }
+
     public void getAccessoryInfo(Accessory accessory)
     {
         System.out.println("Name: " + accessory.getName());
