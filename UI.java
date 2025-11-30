@@ -88,12 +88,66 @@ public class UI
 
     public void accessoryInfoMenu()
     {
-        System.out.println("2");
+        Scanner input = new Scanner(System.in);
+
+        while (true)
+        {
+            if (playerInventory.accessoryList.isEmpty())
+            {
+                System.out.println("No Viewable Accessories.");
+                break;
+            }
+            else
+            {
+                int back = playerInventory.accessoryList.size() + 1;
+                System.out.println("---------- Choose Accessory -----------");
+                playerInventory.getAccessoryList();
+                System.out.println(back + ". Back");
+                System.out.println();
+                System.out.print(">>> ");
+                int choice = input.nextInt();
+                if (choice == back)
+                {
+                    return;
+                }
+                else if (choice > playerInventory.accessoryList.size())
+                {
+                    System.out.println("Invalid Accessory");
+                }
+                else
+                {
+                    playerInventory.getAccessoryInfo(playerInventory.accessoryList.get(choice-1));
+                }
+            }
+        }
     }
 
     public void addAccessoryMenu()
     {
-        System.out.println("3");
+        Scanner input = new Scanner(System.in);
+
+        while (true)
+        {
+            System.out.println("---------- Choose Accessory -----------");
+            for (Accessory acs : playerInventory.totalAccessories)
+            {
+                System.out.print(acs.getID() + ": ");
+                System.out.println(acs.getName());
+            }
+            System.out.println();
+            System.out.print(">>> ");
+            int choice = input.nextInt();
+            if (choice < 1 || choice > 20)
+            {
+                System.out.println("Invalid Accessory");
+            }
+            else
+            {
+                playerInventory.addAccessory(playerInventory.totalAccessories.get(choice-1));
+                System.out.println(playerInventory.totalAccessories.get(choice-1).getName() + " added!");
+                return;
+            }
+        }
     }
 
     public void upgradeAccessoryMenu()
