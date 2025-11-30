@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Handler
 {
@@ -13,7 +12,6 @@ public class Handler
         List<Accessory> accessories = loadData("accessories.txt");
 
         Inventory playerInventory = new Inventory(accessoryList, accessories);
-        playerInventory.getAccessoryList();
     }
 
     public static List<Accessory> loadData(String path)

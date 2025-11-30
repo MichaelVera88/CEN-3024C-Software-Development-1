@@ -81,7 +81,7 @@ public class Inventory
             int upgradeID = accessory.getUpgrade();
             for (Accessory acs : totalAccessories)
             {
-                if (acs.getUpgrade() == upgradeID)
+                if (acs.getID() == upgradeID)
                 {
                     addAccessory(acs);
                     removeAccessory(accessory);
