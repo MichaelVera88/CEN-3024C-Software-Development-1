@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.List;
 
@@ -238,6 +237,9 @@ public class UI
 
     public void totalValueMenu()
     {
-        System.out.println("6");
+        System.out.println("---------- Inventory Value -----------");
+        System.out.println("Magic Power: " + playerInventory.getTotalMP());
+        System.out.println("Total Value: " + playerInventory.getTotalValue());
+        }
     }
-}
+
