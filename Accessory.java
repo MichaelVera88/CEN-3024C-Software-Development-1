@@ -1,52 +1,14 @@
 import java.util.HashMap;
 import java.util.Map;
 
-/*
-* Stats Class:
-*   - Takes 2 arrays:
-*       - stat names
-*       - corresponding stat values
-*   - Combines & returns both arrays into a hashmap with the key being the name
-*/
-class Stats
-{
-    // Instance Variables
-    private String[] statNames;
-    private int[] statValues;
-
-    // Initialization
-    public Stats(String[] statNames, int[] statValues)
-    {
-        this.statNames = statNames;
-        this.statValues = statValues;
-    }
-
-    // Combine into Hashmap
-    public Map<String, Integer> getAccessoryStats()
-    {
-        // Check if both arrays are equal length
-        if (statNames.length != statValues.length)
-        {
-            throw new ArrayIndexOutOfBoundsException("statNames.length and statValues.length are not equal.");
-        }
-        else
-        {
-            Map<String, Integer> accessoryStats = new HashMap<>();
-            for (int i = 0; i < statNames.length; i++)
-            {
-                accessoryStats.put(statNames[i], statValues[i]);
-            }
-            return accessoryStats;
-        }
-    }
-}
-
 public class Accessory
 {
     // Instance Variables
     public int ID;
     public String name;
     public String rarity;
+    public String[] statNames;
+    public int[] statValues;
     public Map<String, Integer> stats;
     public String description;
     public String requirements;
@@ -60,7 +22,8 @@ public class Accessory
             int ID,
             String name,
             String rarity,
-            Map<String, Integer> stats,
+            String[] statNames,
+            int[] statValues,
             String description,
             String requirements,
             int upgrade,
@@ -71,13 +34,34 @@ public class Accessory
         this.ID = ID;
         this.name = name;
         this.rarity = rarity;
-        this.stats = stats;
+        this.statNames = statNames;
+        this.statValues = statValues;
         this.description = description;
         this.requirements = requirements;
         this.upgrade = upgrade;
         this.source = source;
         this.mp = mp;
         this.price = price;
+
+        setStats();
+    }
+
+    // Set Accessory Stats
+    private void setStats()
+    {
+        if (statNames.length != statValues.length)
+        {
+            throw new ArrayIndexOutOfBoundsException("statNames.length and statValues.length are not equal.");
+        }
+        else
+        {
+            Map<String, Integer> accessoryStats = new HashMap<>();
+            for (int i = 0; i < statNames.length; i++)
+            {
+                accessoryStats.put(statNames[i], statValues[i]);
+            }
+            stats = accessoryStats;
+        }
     }
 
     // Accessory Getters
@@ -91,11 +75,4 @@ public class Accessory
     public String getSource() {return source;}
     public int getMP() {return mp;}
     public int getPrice() {return price;}
-
-    // Set Accessory Stats
-    public Map<String, Integer> setAccessoryStats(String[] names, int[] values)
-    {
-        Stats accessoryStats = new Stats(names, values);
-        return stats = accessoryStats.getAccessoryStats();
-    }
 }
