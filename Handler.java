@@ -9,13 +9,11 @@ public class Handler
 {
     public static void main(String[] args)
     {
+        List<Accessory> accessoryList = new ArrayList<>();
         List<Accessory> accessories = loadData("accessories.txt");
 
-        for (Accessory acs : accessories)
-        {
-            Map<String, Integer> stat = acs.getStats();
-            stat.forEach((k, v) -> System.out.println(k + ": " + v));
-        }
+        Inventory playerInventory = new Inventory(accessoryList, accessories);
+        playerInventory.getAccessoryList();
     }
 
     public static List<Accessory> loadData(String path)

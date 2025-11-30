@@ -10,8 +10,9 @@ public class Inventory
     public int totalValue;
 
     // Initialization
-    public Inventory(List<Accessory> totalAccessories)
+    public Inventory(List<Accessory> accessoryList, List<Accessory> totalAccessories)
     {
+        this.accessoryList = accessoryList;
         this.totalAccessories = totalAccessories;
     }
 
