@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CEN-3024C-Software-Development-1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CEN_3024C_Software_Development_1_jar</output-path>
+    <root id="archive" name="CEN-3024C-Software-Development-1.jar">
+      <element id="module-output" name="CEN-3024C-Software-Development-1" />
+    </root>
+  </artifact>
+</component>
